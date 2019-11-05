@@ -53,16 +53,3 @@ class Leer_ficheros():
                 vehiculo=Nohibridos(i[1],i[2],i[3],i[4],i[5])
                 vehiculos.append(vehiculo)
         return vehiculos
-            
-
-                      
-           
-               
-
-p=Leer_ficheros()
-matriz=p.crear_objeto_vehiculo()
-for i in matriz:
-    print(i.get_modelo())
-
-
-    
