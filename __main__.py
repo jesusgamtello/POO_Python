@@ -8,6 +8,7 @@ clientes=p.crear_objeto_clientes()
 coches=p.crear_objeto_vehiculo()
 concesionario=Concesionario(coches,clientes)
 
+
 def menu():
 
     os.system('cls') #seria clear en caso de ejecutar en linux
@@ -34,7 +35,8 @@ while True:
 
         input('\nTodos los clientes mostrados\nPulse una tecla para continuar')
     elif opcion==2:
-        print("")
+        DNI = str(input("Introduzca el DNI >>\n"))
+        concesionario.realizar_reservas(DNI)
         input('alquilar un vehiculo\nPulse una tecla para continuar')
     elif opcion==3:
         DNI=str(input("Introduzca el DNI >>\n"))
