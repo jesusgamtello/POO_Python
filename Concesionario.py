@@ -1,5 +1,7 @@
 from Cliente_Vip import Vip
 from Cliente import Cliente
+from Contrato import Contrato
+from leer_ficheros import Leer_ficheros
 class Concesionario(object):
 
     def __init__(self,vehiculos,clientes):
@@ -54,20 +56,28 @@ class Concesionario(object):
 
     def realizar_reservas(self,dni):
 
-        if not self.comprobar_cliente(dni) :
+        if not self.comprobar_cliente(dni):
             nombre=str(input("Introduzca el nombre del nuevo cliente >>\n"))
             DNI=str(input("Introduzca el DNI >>\n"))
             numero=input("Inserte numero de tarjeta >>\n")
             años_carnet=int(input("Introduzca los años que lleva con el permiso de conducir >>\n"))
-            Cliente(nombre, DNI, numero, años_carnet)
+            cliente=Cliente(nombre, DNI, numero, años_carnet)
             print("Cliente nuevo creado con éxito")
         else:
             cliente=self.devolver_cliente(dni)
 
         matricula=str(input("introduzca la matricula del vehiculo que desea alquilar >> \n"))
+        while not self.comprobar_matricula(matricula):
+            matricula=str(input("Matricula introducida incorrecta, introduzca de nuevo otra matricula >>\n"))
+        while not self.devolver_vehiculo(matricula).get_disponible():
+            matricula=str(input("El vehiculo ya esta alquilado, introduzca otra matricula >>\n"))
+        coche=self.devolver_vehiculo(matricula)
+        num_dias=str(input("Introduzca el numero de días que desea alquilar el vehiculo >>\n"))
+        if coche.get_disponible():
 
+            cliente.set_contratos(Contrato(cliente,coche,num_dias))
+            coche.set_disponible(False)
+            print("Coche alquilado correctamente")
 
-
-
-
-
+        '''else:
+            print("El coche ya esta alquilado")'''
