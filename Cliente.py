@@ -2,6 +2,7 @@ class Cliente(object):
     #atos  personales  (NIFy nombre),  número  de  tarjeta  de  crédito, 
     # identificador  del  vehículoa  alquilar,
     # el  tiempo por el que se alquilayaño en el que se sacó el permiso de conducir
+    contratos=[]
     def __init__(self,NIF,nombre,num_tarjeta,año_permiso,descuento=0):
         self.NIF=NIF
         self.nombre=nombre
@@ -22,4 +23,8 @@ class Cliente(object):
     
     def get_numtarjeta(self):
         return self.num_tarjeta
-    
+
+    def get_contratos(self):
+        return self.contratos
+    def set_contratos(self,valor):
+        self.contratos.append(valor)
