@@ -1,5 +1,6 @@
 class Vehiculo(object):
     #matrícula, kilometraje, precio por día,modelo
+    disponible=True
     def __init__(self,matricula,kilometraje,precio_dia,modelo):
         self.matricula=matricula
         self.kilometraje=kilometraje
@@ -18,7 +19,12 @@ class Vehiculo(object):
     
     def get_modelo(self):
         return self.modelo
-    
+    def get_disponible(self):
+        return self.disponible
+
+
+    def set_disponible(self,valor):
+        self.disponible=valor
     def set_matricula(self,valor):
         self.matricula=valor
 
